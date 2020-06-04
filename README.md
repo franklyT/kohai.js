@@ -21,9 +21,11 @@ Components are loaded sequentially into an HTML page as follows:
 ```
 <script>
 // components to load
-// this produces two copies of the Example component
-  COMPONENTS.example;
-  COMPONENTS.example;
+  COMPONENTS.head;
+  COMPONENTS.navbar;
+    COMPONENTS.example;
+    COMPONENTS.example;
+  COMPONENTS.footer;
 </script>
 ```
 
