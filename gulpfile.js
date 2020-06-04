@@ -25,6 +25,10 @@ GULP.task("build-ts", function () {
   return tsResult.js.pipe(GULP.dest("./"));
 });
 
+GULP.task("build-js", function () {
+  return GULP.src("./src/**/*.js").pipe(GULP.dest("./dist"));
+});
+
 GULP.task("build-html", function () {
   return GULP.src("./src/**/*.html").pipe(GULP.dest("./dist"));
 });
@@ -46,9 +50,14 @@ GULP.task(
       GULP.watch("./src/**/*.html", GULP.series("build-html"));
       cb();
     },
+    "build-js",
+    function (cb) {
+      GULP.watch("./src/js/**/*.js", GULP.series("build-js"));
+      cb();
+    },
     "build-ts",
     function (cb) {
-      GULP.watch("./src/ts/**/*.ts", GULP.series("build-ts") );
+      GULP.watch("./src/ts/**/*.ts", GULP.series("build-ts"));
       cb();
     },
     "build-assets",
