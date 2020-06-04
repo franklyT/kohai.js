@@ -16,7 +16,7 @@ build-site builds the following from an src folder to dist:
 
 Our root compiled js is loaded into every html page in the head, to prevent pop-in. Our CSS is also loaded explicitly into the html file for the same reason.
 
-Components are loaded sequentially into an HTML page as follows:
+Components are loaded sequentially into an HTML page in the body tag as follows:
 
 ```
 <script>
