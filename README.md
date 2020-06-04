@@ -45,6 +45,7 @@ Your HTML page might look like this:
     <script src="/./js/Library/vanilla-lazyload.js"></script>
 </body>
 
-</html>```
+</html>
+```
 
 Note: Our quick and dirty CSS-in-JS solution supports only SASS-style media queries currently (all that was required for personal use) but could be rolled to accept more SASS-style queries easily.
