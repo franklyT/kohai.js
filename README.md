@@ -1,3 +1,3 @@
 # mini-static-gen
 
-gulp to build site to dist folder
+gulp "build-site" to build site to dist folder
