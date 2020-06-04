@@ -14,6 +14,8 @@ build-site builds the following from an src folder to dist:
   
 * HTML structure copying, e.g. from index and nested pages.
 
+Our root js is loaded into every html page in the head, to prevent pop-in. Our CSS is also loaded explicitly into the html file for the same reason.
+
 Components are loaded sequentially into an HTML page as follows:
 
 ```
@@ -24,6 +26,5 @@ Components are loaded sequentially into an HTML page as follows:
   COMPONENTS.example;
 </script>
 ```
-  
 
 Note: Our quick and dirty CSS-in-JS solution supports only SASS-style media queries currently (all that was required for personal use) but could be rolled to accept more SASS-style queries easily.
