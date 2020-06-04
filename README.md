@@ -34,12 +34,11 @@ Your HTML page might look like this:
     // components to load
         COMPONENTS.head; 
         COMPONENTS.navbar; 
-        COMPONENTS.hero; 
-        COMPONENTS.ad; 
-        // testing
-        COMPONENTS.hero; 
-        COMPONENTS.ad; 
-        // testing
+          COMPONENTS.hero; 
+          COMPONENTS.ad; 
+          COMPONENTS.news; 
+          COMPONENTS.ad;
+          COMPONENTS.contact;
         COMPONENTS.footer;
     </script>
     <script src="/./js/Library/vanilla-lazyload.js"></script>
