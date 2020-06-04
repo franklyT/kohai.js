@@ -27,15 +27,15 @@ STYLES.EXAMPLE = {
         `
     }
   };
-  
-  writeDOM(
-    () => {
-      document.getElementById("component_example")!.innerHTML = /*html*/`
+
+  Object.defineProperty(COMPONENTS, "example", {
+    get: function () {
+      document.body.innerHTML += /*html*/`
       <div class=${STYLES.EXAMPLE.container}>
         <div class=${STYLES.EXAMPLE.stuff}>
         </div>
       </div>
       `
     }
-  );
+  });
   

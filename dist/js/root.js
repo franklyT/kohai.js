@@ -1,6 +1,11 @@
 "use strict";
-// Vars
 var STYLES = {};
+var COMPONENTS = {};
+//
+// metadata
+var SITE_DATA = {
+    title: ""
+};
 function provideKey() {
     var key = "";
     var ALPHA_KEY = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -43,14 +48,18 @@ STYLES.EXAMPLE = {
         stuff: /*css*/ "\n            display: block;\n        "
     }
 };
-writeDOM(function () {
-    document.getElementById("component_example").innerHTML = /*html*/ "\n      <div class=" + STYLES.EXAMPLE.container + ">\n        <div class=" + STYLES.EXAMPLE.stuff + ">\n        </div>\n      </div>\n      ";
+Object.defineProperty(COMPONENTS, "example", {
+    get: function () {
+        document.body.innerHTML += /*html*/ "\n      <div class=" + STYLES.EXAMPLE.container + ">\n        <div class=" + STYLES.EXAMPLE.stuff + ">\n        </div>\n      </div>\n      ";
+    }
 });
-document.head.innerHTML += /* html */ "\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title></title>\n    <meta name=\"Description\" content=\"\">\n";
-// two levels down to shim AMD/gulp order
-var EVENT_WRITE_STYLES = new CustomEvent("writeStyles");
+Object.defineProperty(COMPONENTS, "head", {
+    get: function () {
+        document.head.innerHTML += /*html*/ "\n          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n          <title>" + SITE_DATA.title + "</title>\n          <meta name=\"Description\" content=\"{{ renderData.description or description or metadata.description }}\">\n    ";
+    }
+});
+// down two levels to prevent gulp compilation from pushing it above our components
 for (var _i = 0, _a = Object.entries(STYLES); _i < _a.length; _i++) {
     var KEY = _a[_i][0];
     writeStylesFrom(STYLES[KEY]);
 }
-document.dispatchEvent(EVENT_WRITE_STYLES);
