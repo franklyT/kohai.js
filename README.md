@@ -35,9 +35,9 @@ Your HTML page might look like this:
         COMPONENTS.head; 
         COMPONENTS.navbar; 
           COMPONENTS.hero; 
-          COMPONENTS.ad; 
+          COMPONENTS.bodyAd; 
           COMPONENTS.news; 
-          COMPONENTS.ad;
+          COMPONENTS.bodyAd;
           COMPONENTS.contact;
         COMPONENTS.footer;
     </script>
