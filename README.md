@@ -20,8 +20,8 @@ Components are loaded into an HTML page as follows:
 <script>
 // components to load
 // this produces two copies of the Example component
-COMPONENTS.example;
-COMPONENTS.example;
+  COMPONENTS.example;
+  COMPONENTS.example;
 </script>
 ```
   
