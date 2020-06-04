@@ -2,7 +2,7 @@
 
 ### gulp "build-site" to build site to dist folder
 
-Gulp builds the following from an src folder to dist:
+build-site builds the following from an src folder to dist:
 
 * Asset files, e.g. images, videos, music, etc.
   
