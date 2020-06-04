@@ -14,7 +14,7 @@ build-site builds the following from an src folder to dist:
   
 * HTML structure copying, e.g. from index and nested pages.
 
-Components are loaded into an HTML page as follows:
+Components are loaded sequentially into an HTML page as follows:
 
 ```
 <script>
