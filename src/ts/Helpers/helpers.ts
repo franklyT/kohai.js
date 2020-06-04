@@ -1,5 +1,5 @@
 function provideKey() {
-  let key = "";
+  let key:string = "";
   const ALPHA_KEY: string =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for (let iterator = 0; iterator < 12; iterator++) {
@@ -13,8 +13,8 @@ function provideKey() {
 // this scopes each component's CSS to itself
 // append media queries like SASS styles
 function writeStylesFrom(styleObject: any) {
-  const SCOPEKEY = provideKey();
-  let newStyle = document.createElement("style");
+  const SCOPEKEY:string = provideKey();
+  let newStyle:Element = document.createElement("style");
 
   for (let [key, value] of Object.entries(styleObject.styles)) {
     let capValue:any = value;
