@@ -1,8 +1,6 @@
-COMPONENTS.example = {};
-
 STYLES.EXAMPLE = {
-    styles: {
-      container: /*css*/`
+  styles: {
+    container: /*css*/ `
             display: flex;
             flex-wrap: wrap;
             margin-left: 19vw;
@@ -24,27 +22,23 @@ STYLES.EXAMPLE = {
                 height: 0;
             }
         `,
-        stuff: /*css*/`
+    stuff: /*css*/ `
             display: block;
-        `
-    }
-  };
+        `,
+  },
+};
 
-  Object.defineProperty(COMPONENTS.example, "get", {
-    get: function () {
-      return /*html*/`
+COMPONENTS.example = {
+  get get() {
+    return /*html*/ `
       <div class=${STYLES.EXAMPLE.container}>
         <div class=${STYLES.EXAMPLE.stuff}>
         </div>
       </div>
-      `
-    }
-  });
-  
-  Object.defineProperty(COMPONENTS.example, "write", {
-    get: function () {
-      document.body.innerHTML += COMPONENTS.example.get;
-    }
-  });
-  
-  
+      `;
+  },
+  get write() {
+    document.body.innerHTML += COMPONENTS.example.get;
+    return;
+  },
+};

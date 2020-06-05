@@ -42,34 +42,30 @@ function writeDOM(html) {
         html();
     });
 }
-COMPONENTS.example = {};
 STYLES.EXAMPLE = {
     styles: {
         container: /*css*/ "\n            display: flex;\n            flex-wrap: wrap;\n            margin-left: 19vw;\n            margin-right: 19vw;\n            margin-top: 2%;\n            margin-bottom: 7vh;\n            height: fit-content;\n            height: -moz-fit-content;\n\n            @media (max-width: 1500px) {\n                margin-left: 0 !important;\n                margin-right: 0 !important;\n                height: 0;\n            }\n\n            @media (max-width: 1000px) {\n                margin-left: 0 !important;\n                margin-right: 0 !important;\n                height: 0;\n            }\n        ",
-        stuff: /*css*/ "\n            display: block;\n        "
-    }
+        stuff: /*css*/ "\n            display: block;\n        ",
+    },
 };
-Object.defineProperty(COMPONENTS.example, "get", {
-    get: function () {
+COMPONENTS.example = {
+    get get() {
         return /*html*/ "\n      <div class=" + STYLES.EXAMPLE.container + ">\n        <div class=" + STYLES.EXAMPLE.stuff + ">\n        </div>\n      </div>\n      ";
-    }
-});
-Object.defineProperty(COMPONENTS.example, "write", {
-    get: function () {
+    },
+    get write() {
         document.body.innerHTML += COMPONENTS.example.get;
-    }
-});
-COMPONENTS.head = {};
-Object.defineProperty(COMPONENTS.head, "get", {
-    get: function () {
-        document.head.innerHTML += /*html*/ "\n          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n          <title>" + SITE_DATA.title + "</title>\n          <meta name=\"Description\" content=\"{{ renderData.description or description or metadata.description }}\">\n    ";
-    }
-});
-Object.defineProperty(COMPONENTS.head, "write", {
-    get: function () {
+        return;
+    },
+};
+COMPONENTS.head = {
+    get get() {
+        return /*html*/ "\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>" + SITE_DATA.title + "</title>\n    <meta name=\"Description\" content=\"{{ renderData.description or description or metadata.description }}\">\n";
+    },
+    get write() {
         document.head.innerHTML += COMPONENTS.head.get;
-    }
-});
+        return;
+    },
+};
 // down two levels to prevent gulp compilation from pushing it above our components
 for (var _i = 0, _a = Object.entries(STYLES); _i < _a.length; _i++) {
     var KEY = _a[_i][0];
