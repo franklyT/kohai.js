@@ -16,35 +16,100 @@ build-site builds the following from an src folder to dist:
 
 Our root compiled js is loaded into every html page in the head, to prevent pop-in. Our CSS is also loaded explicitly into the html file for the same reason.
 
-Components are loaded sequentially into an HTML page in the body tag.
+Components are written sequentially into an HTML page in the body tag via their "write" function.
 
-Your HTML page might look like this:
+A component consits of two properties, "write" and "get". Write will append the component to the document and call necessary additional code, and get will simply return a template literal of said component.
+
+A component might look like this:
+
+```
+COMPONENTS.example = {};
+
+STYLES.EXAMPLE = {
+    styles: {
+      container: /*css*/`
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 19vw;
+            margin-right: 19vw;
+            margin-top: 2%;
+            margin-bottom: 7vh;
+            height: fit-content;
+            height: -moz-fit-content;
+
+            @media (max-width: 1500px) {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                height: 0;
+            }
+
+            @media (max-width: 1000px) {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                height: 0;
+            }
+        `,
+        stuff: /*css*/`
+            display: block;
+        `
+    }
+  };
+
+  Object.defineProperty(COMPONENTS.example, "get", {
+    get: function () {
+      return /*html*/`
+      <div class=${STYLES.EXAMPLE.container}>
+        <div class=${STYLES.EXAMPLE.stuff}>
+        </div>
+      </div>
+      `
+    }
+  });
+  
+  Object.defineProperty(COMPONENTS.example, "write", {
+    get: function () {
+      document.body.innerHTML += COMPONENTS.example.get;
+    }
+  });
+```
+
+Herein we define styles with our CSS-in-JS (only media queries currently supported), define what is returned when the component get function is called (the HTML), and what is returned when the component write function is called.
+
+You can nest components by calling a component's get function within another component. For example,
+
+```
+  Object.defineProperty(COMPONENTS.example, "get", {
+    get: function () {
+      return /*html*/`
+        ${COMPONENTS.example2.get}
+        ${COMPONENTS.example2.get}
+      `
+    }
+  });
+```
+
+Your HTML page writing our components might look like this:
 
 ```
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <link href="/./CSS/root.min.css" type="text/css" rel="stylesheet" />
+    <!-- render root script in head to prevent pop-in -->
     <script src="/./js/root.js"></script>
 </head>
 
 <body>
     <script>
     // components to load
-        COMPONENTS.head; 
-        COMPONENTS.navbar; 
-          COMPONENTS.hero; 
-          COMPONENTS.bodyAd; 
-          COMPONENTS.news; 
-          COMPONENTS.bodyAd;
-          COMPONENTS.contact;
-        COMPONENTS.footer;
+        COMPONENTS.head.write;
+    // this produces two copies of the Example component
+        COMPONENTS.example.write;
+        COMPONENTS.example.write;
     </script>
-    <script src="/./js/Library/vanilla-lazyload.js"></script>
+    <sript src="/./dist/js/Library/example-API.js"></script>
 </body>
 
-</html>
-```
-
-Note: Our quick and dirty CSS-in-JS solution supports only SASS-style media queries currently (all that was required for personal use) but could be rolled to accept more SASS-style queries easily.
+</html>```
