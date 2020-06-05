@@ -23,8 +23,6 @@ A component consits of two properties, "write" and "get". Write will append the 
 A component might look like this:
 
 ```
-COMPONENTS.example = {};
-
 STYLES.EXAMPLE = {
     styles: {
       container: /*css*/`
@@ -55,22 +53,50 @@ STYLES.EXAMPLE = {
     }
   };
 
-  Object.defineProperty(COMPONENTS.example, "get", {
-    get: function () {
-      return /*html*/`
+STYLES.EXAMPLE = {
+  styles: {
+    container: /*css*/ `
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 19vw;
+            margin-right: 19vw;
+            margin-top: 2%;
+            margin-bottom: 7vh;
+            height: fit-content;
+            height: -moz-fit-content;
+
+            @media (max-width: 1500px) {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                height: 0;
+            }
+
+            @media (max-width: 1000px) {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                height: 0;
+            }
+        `,
+    stuff: /*css*/ `
+            display: block;
+        `,
+  },
+};
+
+COMPONENTS.example = {
+  get get() {
+    return /*html*/ `
       <div class=${STYLES.EXAMPLE.container}>
         <div class=${STYLES.EXAMPLE.stuff}>
         </div>
       </div>
-      `
-    }
-  });
-  
-  Object.defineProperty(COMPONENTS.example, "write", {
-    get: function () {
-      document.body.innerHTML += COMPONENTS.example.get;
-    }
-  });
+      `;
+  },
+  get write() {
+    document.body.innerHTML += COMPONENTS.example.get;
+    return;
+  }
+};
 ```
 
 Herein we define styles with our CSS-in-JS (only media queries currently supported), define what is returned when the component get function is called (the HTML), and what is returned when the component write function is called.
@@ -78,14 +104,18 @@ Herein we define styles with our CSS-in-JS (only media queries currently support
 You can nest components by calling a component's get function within another component. For example,
 
 ```
-  Object.defineProperty(COMPONENTS.example, "get", {
-    get: function () {
-      return /*html*/`
+COMPONENTS.example = {
+  get get() {
+    return  /*html*/`
         ${COMPONENTS.example2.get}
         ${COMPONENTS.example2.get}
       `
-    }
-  });
+  },
+  get write() {
+    document.body.innerHTML += COMPONENTS.example.get;
+    return;
+  }
+};
 ```
 
 Your HTML page writing our components might look like this:
