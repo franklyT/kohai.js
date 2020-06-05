@@ -99,6 +99,7 @@ Your HTML page writing our components might look like this:
     <link href="/./CSS/root.min.css" type="text/css" rel="stylesheet" />
     <!-- render root script in head to prevent pop-in -->
     <script src="/./js/root.js"></script>
+    <script src="/./js/writeCSS.js"></script>
 </head>
 
 <body>

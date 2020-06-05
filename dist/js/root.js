@@ -66,8 +66,3 @@ COMPONENTS.head = {
         return;
     },
 };
-// down two levels to prevent gulp compilation from pushing it above our components
-for (var _i = 0, _a = Object.entries(STYLES); _i < _a.length; _i++) {
-    var KEY = _a[_i][0];
-    writeStylesFrom(STYLES[KEY]);
-}
