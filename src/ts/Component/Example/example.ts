@@ -1,3 +1,5 @@
+COMPONENTS.example = {};
+
 STYLES.EXAMPLE = {
     styles: {
       container: /*css*/`
@@ -28,9 +30,9 @@ STYLES.EXAMPLE = {
     }
   };
 
-  Object.defineProperty(COMPONENTS, "example", {
+  Object.defineProperty(COMPONENTS.example, "get", {
     get: function () {
-      document.body.innerHTML += /*html*/`
+      return /*html*/`
       <div class=${STYLES.EXAMPLE.container}>
         <div class=${STYLES.EXAMPLE.stuff}>
         </div>
@@ -38,4 +40,11 @@ STYLES.EXAMPLE = {
       `
     }
   });
+  
+  Object.defineProperty(COMPONENTS.example, "write", {
+    get: function () {
+      document.body.innerHTML += COMPONENTS.example.get;
+    }
+  });
+  
   

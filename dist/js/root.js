@@ -1,11 +1,11 @@
 "use strict";
-var STYLES = {};
-var COMPONENTS = {};
-//
 // metadata
 var SITE_DATA = {
     title: ""
 };
+var STYLES = {};
+var COMPONENTS = {};
+//
 function provideKey() {
     var key = "";
     var ALPHA_KEY = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -42,20 +42,32 @@ function writeDOM(html) {
         html();
     });
 }
-Object.defineProperty(COMPONENTS, "head", {
-    get: function () {
-        document.head.innerHTML += /*html*/ "\n          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n          <title>" + SITE_DATA.title + "</title>\n          <meta name=\"Description\" content=\"{{ renderData.description or description or metadata.description }}\">\n    ";
-    }
-});
+COMPONENTS.example = {};
 STYLES.EXAMPLE = {
     styles: {
         container: /*css*/ "\n            display: flex;\n            flex-wrap: wrap;\n            margin-left: 19vw;\n            margin-right: 19vw;\n            margin-top: 2%;\n            margin-bottom: 7vh;\n            height: fit-content;\n            height: -moz-fit-content;\n\n            @media (max-width: 1500px) {\n                margin-left: 0 !important;\n                margin-right: 0 !important;\n                height: 0;\n            }\n\n            @media (max-width: 1000px) {\n                margin-left: 0 !important;\n                margin-right: 0 !important;\n                height: 0;\n            }\n        ",
         stuff: /*css*/ "\n            display: block;\n        "
     }
 };
-Object.defineProperty(COMPONENTS, "example", {
+Object.defineProperty(COMPONENTS.example, "get", {
     get: function () {
-        document.body.innerHTML += /*html*/ "\n      <div class=" + STYLES.EXAMPLE.container + ">\n        <div class=" + STYLES.EXAMPLE.stuff + ">\n        </div>\n      </div>\n      ";
+        return /*html*/ "\n      <div class=" + STYLES.EXAMPLE.container + ">\n        <div class=" + STYLES.EXAMPLE.stuff + ">\n        </div>\n      </div>\n      ";
+    }
+});
+Object.defineProperty(COMPONENTS.example, "write", {
+    get: function () {
+        document.body.innerHTML += COMPONENTS.example.get;
+    }
+});
+COMPONENTS.head = {};
+Object.defineProperty(COMPONENTS.head, "get", {
+    get: function () {
+        document.head.innerHTML += /*html*/ "\n          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n          <title>" + SITE_DATA.title + "</title>\n          <meta name=\"Description\" content=\"{{ renderData.description or description or metadata.description }}\">\n    ";
+    }
+});
+Object.defineProperty(COMPONENTS.head, "write", {
+    get: function () {
+        document.head.innerHTML += COMPONENTS.head.get;
     }
 });
 // down two levels to prevent gulp compilation from pushing it above our components
