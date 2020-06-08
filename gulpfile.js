@@ -1,9 +1,11 @@
+// CSS configuration
 const GULP = require("gulp");
 const GUTIL = require("gulp-util");
+const GAP = require('gulp-append-prepend');
 const GTS = require("gulp-typescript");
 const GTSPROJ = GTS.createProject("tsconfig.json");
-const UG = require("gulp-uglify");
 const CONCAT = require("gulp-concat");
+const UG = require("gulp-uglify");
 const CLEAN = require("gulp-clean-css");
 const AUTOPREFIXER = require("gulp-autoprefixer");
 
@@ -23,21 +25,23 @@ GULP.task("build-css", function (cb) {
 
 GULP.task("build-ts", function () {
   var tsResult = GULP.src("./src/ts/**/*.ts").pipe(GTSPROJ());
-  var tsResultFinal = tsResult.js;
-  return tsResultFinal
+  var tsFinalResult = tsResult.js;
+  return tsFinalResult
+  .pipe(CONCAT('root.min.js'))
   .pipe(UG())
-  .pipe(GULP.dest("./"));
+  .pipe(GAP.appendFile('./src/js/_root/root.js'))
+  .pipe(GULP.dest("./dist/js"));
 });
 
 GULP.task("build-js", function () {
-  return GULP.src("./src/**/*.js").pipe(GULP.dest("./dist"));
+  return GULP.src(["./src/js/Library/*.js", "!./src/js/_root/root.js"]).pipe(GULP.dest("./dist"));
 });
 
 GULP.task("build-html", function () {
   return GULP.src("./src/**/*.html").pipe(GULP.dest("./dist"));
 });
 
- GULP.task("build-assets", function () {
+GULP.task("build-assets", function () {
   return GULP.src("./src/Assets/**/*.*").pipe(GULP.dest("./dist/Assets"));
 });
 
