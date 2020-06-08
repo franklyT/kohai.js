@@ -30,7 +30,11 @@ GULP.task("build-ts", function () {
   .pipe(CONCAT('root.min.js'))
   .pipe(GAP.appendFile('./src/js/_root/root.js'))
   .pipe(GBABEL({
-    presets: ['@babel/env', 'minify'],
+    presets: ['@babel/env', ['minify', {
+      builtIns: false,
+      evaluate: false,
+      mangle: false,
+    }],],
     plugins: ["module:faster.js"]
   }))
   .pipe(GULP.dest("./dist/js"));
