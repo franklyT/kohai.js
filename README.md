@@ -69,7 +69,7 @@ COMPONENTS.example = {
 };
 ```
 
-Herein we define styles with our CSS-in-JS (only media queries currently supported), define what is returned when the component get function is called (the HTML), and what is returned when the component write function is called.
+Herein we define styles with our CSS-in-JS (media queries, after, before, and hover currently supported), define what is returned when the component get function is called (the HTML), and what is returned when the component write function is called.
 
 You can nest components by calling a component's get function within another component. For example,
 
