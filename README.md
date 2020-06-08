@@ -110,4 +110,5 @@ Your HTML page writing our components might look like this:
     <sript src="/./dist/js/Library/example-API.js"></script>
 </body>
 
-</html>```
+</html>
+```
