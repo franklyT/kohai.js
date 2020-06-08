@@ -30,7 +30,7 @@ function writeStylesFrom(styleObject: any) {
       if (selectDoBlock && selectDoBlock[1]()) {
         let shortCircuitLoop: number = 0;
         let regExp = new RegExp(`(${selectDoBlock[0]}[\\s\\S]*?) {([\\s\\S]*?)}`);
-        
+
         while (
           capValue.match(regExp) &&
           shortCircuitLoop !== 20
@@ -50,12 +50,3 @@ function writeStylesFrom(styleObject: any) {
   document.head.appendChild(newStyle);
 }
 
-
-// this simply prevents us from writing to the DOM until all style declarations are created
-// the function is prevented from running until styles are ready
-
-function writeDOM(html: any) {
-  document.addEventListener("writeStyles", function () {
-    html();
-  });
-}
