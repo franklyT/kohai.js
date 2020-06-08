@@ -26,25 +26,22 @@ A component might look like this:
 STYLES.EXAMPLE = {
   styles: {
     container: /*css*/ `
-            display: flex;
-            flex-wrap: wrap;
-            margin-left: 19vw;
-            margin-right: 19vw;
-            margin-top: 2%;
-            margin-bottom: 7vh;
-            height: fit-content;
-            height: -moz-fit-content;
-
+            display: block;
+ 
             @media (max-width: 1500px) {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                height: 0;
+            // css
             }
-
-            @media (max-width: 1000px) {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                height: 0;
+            
+            :hover {
+            // css
+            }
+            
+            :after {
+            // css
+            }
+            
+            :before {
+            // css
             }
         `,
     stuff: /*css*/ `
@@ -113,4 +110,5 @@ Your HTML page writing our components might look like this:
     <sript src="/./dist/js/Library/example-API.js"></script>
 </body>
 
-</html>```
+</html>
+```
