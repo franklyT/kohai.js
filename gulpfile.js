@@ -2,6 +2,7 @@ const GULP = require("gulp");
 const GUTIL = require("gulp-util");
 const GTS = require("gulp-typescript");
 const GTSPROJ = GTS.createProject("tsconfig.json");
+const UG = require("gulp-uglify");
 const CONCAT = require("gulp-concat");
 const CLEAN = require("gulp-clean-css");
 const AUTOPREFIXER = require("gulp-autoprefixer");
@@ -22,7 +23,10 @@ GULP.task("build-css", function (cb) {
 
 GULP.task("build-ts", function () {
   var tsResult = GULP.src("./src/ts/**/*.ts").pipe(GTSPROJ());
-  return tsResult.js.pipe(GULP.dest("./"));
+  var tsResultFinal = tsResult.js;
+  return tsResultFinal
+  .pipe(UG())
+  .pipe(GULP.dest("./"));
 });
 
 GULP.task("build-js", function () {
