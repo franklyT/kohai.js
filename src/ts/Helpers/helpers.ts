@@ -30,6 +30,7 @@ function writeStylesFrom(styleObject: any) {
       if (selectDoBlock && selectDoBlock[1]()) {
         let shortCircuitLoop: number = 0;
         let regExp = new RegExp(`(${selectDoBlock[0]}[\\s\\S]*?) {([\\s\\S]*?)}`);
+        
         while (
           capValue.match(regExp) &&
           shortCircuitLoop !== 20
