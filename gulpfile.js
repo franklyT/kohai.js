@@ -2,10 +2,10 @@
 const GULP = require("gulp");
 const GUTIL = require("gulp-util");
 const GAP = require('gulp-append-prepend');
+const GBABEL = require('gulp-babel');
 const GTS = require("gulp-typescript");
 const GTSPROJ = GTS.createProject("tsconfig.json");
 const CONCAT = require("gulp-concat");
-const UG = require("gulp-uglify");
 const CLEAN = require("gulp-clean-css");
 const AUTOPREFIXER = require("gulp-autoprefixer");
 
@@ -28,8 +28,11 @@ GULP.task("build-ts", function () {
   var tsFinalResult = tsResult.js;
   return tsFinalResult
   .pipe(CONCAT('root.min.js'))
-  .pipe(UG())
   .pipe(GAP.appendFile('./src/js/_root/root.js'))
+  .pipe(GBABEL({
+    presets: ['@babel/env', 'minify'],
+    plugins: ["module:faster.js"]
+  }))
   .pipe(GULP.dest("./dist/js"));
 });
 
