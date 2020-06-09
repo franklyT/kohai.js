@@ -6,6 +6,7 @@ COMPONENTS.head = {
     <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
 `;
   },
+  
   get write() {
     document.head!.innerHTML += COMPONENTS.head.get;
     return;
