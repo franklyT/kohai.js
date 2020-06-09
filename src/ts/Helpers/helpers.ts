@@ -14,7 +14,7 @@ function writeStylesFrom(styleObject: any) {
   const SCOPE_KEY = provideKey();
   let newStyle:Element = document.createElement("style");
 
-  for (let [key, value] of Object.entries(styleObject.styles)) {
+  for (let [key, value] of Object.entries(styleObject)) {
     let capValue: any = value;
     const APPEND_MOD: Array<any> = [
       [ "@media", function() {return `${capValue.match(new RegExp(`(@media[\\s\\S]*?) {([\\s\\S]*?)}`))[1]}{.${SCOPE_KEY}-${key}{${capValue.match(/(@media [\s\S]*?) {([\s\S]*?)}/)[2]}}}`} ], 

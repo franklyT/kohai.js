@@ -1,4 +1,4 @@
-STYLES.EXAMPLE = {
+COMPONENTS.example = {
   styles: {
     container: /*css*/ `
             display: block;
@@ -21,13 +21,11 @@ STYLES.EXAMPLE = {
             }
         `,
   },
-};
 
-COMPONENTS.example = {
   get get() {
     return /*html*/ `
-      <div class=${STYLES.EXAMPLE.container}>
-        <div class=${STYLES.EXAMPLE.stuff}>
+      <div class=${COMPONENTS.example.styles.container}>
+        <div class=${COMPONENTS.example.styles.stuff}>
         </div>
         ${COMPONENTS.hr.get({color: 'orange', width: '50%', height: '1px'})}
       </div>

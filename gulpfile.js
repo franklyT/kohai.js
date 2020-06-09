@@ -72,7 +72,7 @@ GULP.task(
     },
     "build-ts",
     function (cb) {
-      GULP.watch("./src/ts/**/*.ts", GULP.series("build-ts"));
+      GULP.watch("./src/ts/**/*.ts", GULP.series("build-ts", "build-js"));
       cb();
     },
     "build-assets",
