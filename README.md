@@ -23,47 +23,51 @@ A component consits of two properties, "write" and "get". Write will append the 
 A component might look like this:
 
 ```
-STYLES.EXAMPLE = {
+COMPONENTS.example = {
   styles: {
     container: /*css*/ `
             display: block;
- 
-            @media (max-width: 1500px) {
-            // css
-            }
-            
-            :hover {
-            // css
-            }
-            
-            :after {
-            // css
-            }
-            
-            :before {
-            // css
-            }
         `,
+
     stuff: /*css*/ `
-            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+
+            :hover {
+              background-color: blue;
+            }
+
+            :after {
+              content: 'abc';
+            }
+
+            :before {
+              content: 'abc';
+            }
+
+            @media (max-width: 1000px) {
+              background-color: green !important;
+            }
         `,
   },
-};
 
-COMPONENTS.example = {
   get get() {
     return /*html*/ `
-      <div class=${STYLES.EXAMPLE.container}>
-        <div class=${STYLES.EXAMPLE.stuff}>
+      <div class=${COMPONENTS.example.styles.container}>
+        <div class=${COMPONENTS.example.styles.stuff}>
         </div>
+        ${COMPONENTS.hr.get({color: 'orange', width: '50%', height: '1px'})}
       </div>
       `;
   },
+  
   get write() {
     document.body.innerHTML += COMPONENTS.example.get;
     return;
-  }
+  },
 };
+
 ```
 
 Herein we define styles with our CSS-in-JS (media queries, after, before, and hover currently supported), define what is returned when the component get function is called (the HTML), and what is returned when the component write function is called.
