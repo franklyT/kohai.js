@@ -81,7 +81,7 @@ COMPONENTS.example = {
         ${COMPONENTS.example2.get}
       `
   },
-  
+
   get write() {
     document.body.innerHTML += COMPONENTS.example.get;
     return;
@@ -106,7 +106,7 @@ Your HTML page writing our components might look like this:
     <script>
     // components to load
         COMPONENTS.head.write;
-    // this produces two copies of the Example component
+    // this produces two copies of the example component
         COMPONENTS.example.write;
         COMPONENTS.example.write;
     </script>
