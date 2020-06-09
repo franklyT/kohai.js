@@ -8,7 +8,7 @@ COMPONENTS.head = {
   },
   
   get write() {
-    document.head!.innerHTML += COMPONENTS.head.get;
+    document.head!.innerHTML += this.get;
     return;
   },
 };
