@@ -29,6 +29,7 @@ COMPONENTS.example = {
       <div class=${STYLES.EXAMPLE.container}>
         <div class=${STYLES.EXAMPLE.stuff}>
         </div>
+        ${COMPONENTS.hr.get({color: 'orange', width: '50%', height: '1px'})}
       </div>
       `;
   },
