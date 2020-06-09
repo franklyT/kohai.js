@@ -54,8 +54,8 @@ COMPONENTS.example = {
 
   get get() {
     return /*html*/ `
-      <div class=${COMPONENTS.example.styles.container}>
-        <div class=${COMPONENTS.example.styles.stuff}>
+      <div class=${this.styles.container}>
+        <div class=${this.styles.stuff}>
         </div>
         ${COMPONENTS.hr.get({color: 'orange', width: '50%', height: '1px'})}
       </div>
@@ -63,7 +63,7 @@ COMPONENTS.example = {
   },
   
   get write() {
-    document.body.innerHTML += COMPONENTS.example.get;
+    document.body.innerHTML += this.get;
     return;
   },
 };
