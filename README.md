@@ -67,7 +67,6 @@ COMPONENTS.example = {
     return;
   },
 };
-
 ```
 
 Herein we define styles with our CSS-in-JS (media queries, after, before, and hover currently supported), define what is returned when the component get function is called (the HTML), and what is returned when the component write function is called.
@@ -82,6 +81,7 @@ COMPONENTS.example = {
         ${COMPONENTS.example2.get}
       `
   },
+  
   get write() {
     document.body.innerHTML += COMPONENTS.example.get;
     return;
