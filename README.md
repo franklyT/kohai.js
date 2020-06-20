@@ -1,4 +1,4 @@
-# mini-static-gen
+# mini-web-framework
 
 ### gulp "build-site" to build site to dist folder
 
