@@ -99,7 +99,7 @@ Your HTML page writing our components might look like this:
     <meta charset="utf-8">
     <link href="/./CSS/root.min.css" type="text/css" rel="stylesheet" />
     <!-- render root script in head to prevent pop-in -->
-    <script src="/./js/root.min.js"></script>
+    <script src="./js/root.min.js"></script>
 </head>
 
 <body>
@@ -110,7 +110,7 @@ Your HTML page writing our components might look like this:
         COMPONENTS.example.write;
         COMPONENTS.example.write;
     </script>
-    <sript src="/./dist/js/Library/example-API.js"></script>
+    <script src="/./dist/js/Library/example-API.js"></script>
 </body>
 
 </html>
