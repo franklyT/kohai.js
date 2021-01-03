@@ -50,3 +50,7 @@ function writeStylesFrom(styleObject: any) {
   document.head.appendChild(newStyle);
 }
 
+function rewriteDOM(location: any, component: any) {
+  location.innerHTML = component.get;
+}
+
