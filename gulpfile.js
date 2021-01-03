@@ -41,7 +41,7 @@ GULP.task("build-ts", function () {
 });
 
 GULP.task("build-js", function () {
-  return GULP.src(["./src/js/Library/*.js", "!./src/js/_root/root.js"])
+  return GULP.src(["./src/js/Library/*.js", "./src/js/*.js", "!./src/js/_root/root.js"])
   /*.pipe(GBABEL({
     presets: ['@babel/env', ['minify', {
       builtIns: false,
@@ -51,7 +51,7 @@ GULP.task("build-js", function () {
     plugins: ["module:faster.js"]
   }))
 */
-  .pipe(GULP.dest("./dist/js/Library"));
+  .pipe(GULP.dest("./dist/js/"));
 });
 
 GULP.task("build-html", function () {
