@@ -1,4 +1,9 @@
-# mini-web-framework
+# kohai.js
+
+A miniature, primarily SOC/encapsulation web design paradigm for personal use. Model-oriented, but generally light and less opinionated: all components are defined as singleton objects that merely encapsulate our JS/HTML/CSS with a rudimentary css-in-js parser. Syntax highlighting is achieved in our JS using tagged template literals.
+
+Currently compiles TypeScript using Babel.
+
 
 ### gulp "build-site" to build site to dist folder
 
@@ -14,13 +19,8 @@ build-site builds the following from an src folder to dist:
   
 * HTML structure copying, e.g. from index and nested pages.
 
-Our root compiled js is loaded into every html page in the head, to prevent pop-in. Our CSS is also loaded explicitly into the html file for the same reason.
 
-Components are written sequentially into an HTML page in the body tag via their "write" function.
-
-A component consits of two properties, "write" and "get". Write will append the component to the document and call necessary additional code, and get will simply return a template literal of said component.
-
-A component might look like this:
+## A component might look like this:
 
 ```
 COMPONENTS.example = {
@@ -68,6 +68,9 @@ COMPONENTS.example = {
   },
 };
 ```
+Components are written sequentially into an HTML page in the body tag via their "write" function. We can also run arbitrary encapsulated code via this function, as it will be called in the root HTML.
+
+Our root compiled js is loaded into every html page in the head, to prevent pop-in. Our CSS is also loaded explicitly into the html file for the same reason.
 
 Herein we define styles with our CSS-in-JS (media queries, after, before, and hover currently supported), define what is returned when the component get function is called (the HTML), and what is returned when the component write function is called.
 
