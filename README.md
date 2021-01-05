@@ -63,7 +63,7 @@ COMPONENTS.example = {
   },
   
   get write() {
-    document.body.innerHTML += this.get;
+     document.body.insertAdjacentHTML('beforeend', this.get);
     return;
   },
 };
@@ -86,7 +86,7 @@ COMPONENTS.example = {
   },
 
   get write() {
-    document.body.innerHTML += COMPONENTS.example.get;
+    document.body.insertAdjacentHTML('beforeend', COMPONENTS.example.get);
     return;
   }
 };
