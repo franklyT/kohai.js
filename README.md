@@ -102,7 +102,7 @@ Your HTML page writing our components might look like this:
     <meta charset="utf-8">
     <link href="/./CSS/root.min.css" type="text/css" rel="stylesheet" />
     <!-- render root script in head to prevent pop-in -->
-    <script async src="./js/root.min.js"></script>
+    <script src="./js/root.min.js"></script>
 </head>
 
 <body>
