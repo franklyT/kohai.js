@@ -113,7 +113,6 @@ Your HTML page writing our components might look like this:
         COMPONENTS.example.write;
         COMPONENTS.example.write;
     </script>
-    <script src="/./dist/js/Library/example-API.js"></script>
 </body>
 
 </html>
