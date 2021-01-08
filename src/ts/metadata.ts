@@ -4,8 +4,7 @@ const SITE_DATA = {
     title: ""
 }
 
-// internal code
-// suppressing undefined key entry error with declaration
-declare var COMPONENTS:any;
-var COMPONENTS:any = {};
+// Make declarations here
+    // declare var $: any;
+    // declare let CodeMirror: any;
 //

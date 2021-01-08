@@ -24,19 +24,25 @@ GULP.task("build-css", function (cb) {
 });
 
 GULP.task("build-ts", function () {
-  var tsResult = GULP.src("./src/ts/**/*.ts").pipe(GTSPROJ());
+  var tsResult = 
+    GULP.src("./src/ts/**/*.ts")
+        .pipe(GTSPROJ());
+
   var tsFinalResult = tsResult.js;
   return tsFinalResult
   .pipe(CONCAT('root.min.js'))
-  .pipe(GAP.appendFile('./src/js/_root/root.js'))
+  // .pipe(GAP.appendFile('./src/ts/__root/KJSComponent.js'))
+
+  // .pipe(GAP.appendFile('./src/js/_root/root.js'))
   .pipe(GBABEL({
     presets: 
     ['@babel/preset-env', ['minify', {
       evaluate: false,
-      mangle: false,
+      mangle: false
     }],
   ],
-    plugins: ["module:faster.js"]  }))
+    plugins: ["module:faster.js"],
+    comments: false  }))
   .pipe(GULP.dest("./dist/js"));
 });
 

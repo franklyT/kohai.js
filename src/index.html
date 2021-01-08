@@ -3,20 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="/./CSS/root.min.css" type="text/css" rel="stylesheet" />
+    <link href="/dist/CSS/root.min.css" type="text/css" rel="stylesheet" />
     <!-- render root script in head to prevent pop-in -->
-    <script src="/./js/root.min.js"></script>
+    <script src="/dist/js/root.min.js"></script>
 </head>
 
 <body>
     <script>
     // components to load
-        COMPONENTS.head.write;
+        new Head();
     // this produces two copies of the Example component
-        COMPONENTS.example.write;
-        COMPONENTS.example.write;
+        new Example();
+        new Example();
     </script>
-    <sript src="/./dist/js/Library/example-API.js"></script>
 </body>
 
 </html>

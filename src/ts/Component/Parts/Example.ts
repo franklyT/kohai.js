@@ -1,5 +1,11 @@
-COMPONENTS.example = {
-  styles: {
+class Example extends KJSComponent {
+  constructor() {
+    super();
+
+    this.writeComponent();
+  }
+
+  styles = {
     container: /*css*/ `
             display: block;
         `,
@@ -25,20 +31,15 @@ COMPONENTS.example = {
               background-color: green !important;
             }
         `,
-  },
+  };
 
-  get get() {
+  get html() {
     return /*html*/ `
       <div class=${this.styles.container}>
         <div class=${this.styles.stuff}>
         </div>
-        ${COMPONENTS.hr.get({color: 'orange', width: '50%', height: '1px'})}
+          ${new Hr({ color: "orange", width: "50%", height: "1px" }).html}
       </div>
       `;
-  },
-  
-  get write() {
-    document.body.insertAdjacentHTML('beforeend', this.get);
-    return;
-  },
-};
+  }
+}
