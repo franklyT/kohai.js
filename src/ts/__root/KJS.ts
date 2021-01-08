@@ -9,7 +9,8 @@ abstract class KJSBase {
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
       let key: string = "";
   
-      for (let i = 0; i < 12; i++) {
+      // 5 is very high entropy
+      for (let i = 0; i < 5; i++) {
         key += ALPHA_KEY[Math.floor(Math.random() * ALPHA_KEY.length)];
       }
   
