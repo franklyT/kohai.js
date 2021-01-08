@@ -76,7 +76,7 @@ In each component, we define styles on the style property via CSS-in-JS (media q
 You can nest components by calling a component's get function within another component. For example,
 
 ```
-class Example extends KJSComponent {
+class Example extends KJSMetaComponent {
   styles: any;
 
   constructor() {
