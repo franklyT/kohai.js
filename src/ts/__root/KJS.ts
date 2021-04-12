@@ -10,6 +10,7 @@ abstract class KJSBase {
       let key: string = "";
   
       // 5 is very high entropy
+      // this method ignores the advantages of hashing our classes, which is slightly less performant
       for (let i = 0; i < 5; i++) {
         key += ALPHA_KEY[Math.floor(Math.random() * ALPHA_KEY.length)];
       }
